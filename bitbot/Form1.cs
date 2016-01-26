@@ -7,14 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using bitbot.Services;
 
 namespace bitbot
 {
     public partial class Form1 : Form
     {
+        INetworkService _networkService;
+
         public Form1()
         {
             InitializeComponent();
+            _networkService = new NetworkService();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -24,7 +28,7 @@ namespace bitbot
 
         private void btnGo_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Hello world!");
+            MessageBox.Show(_networkService.Get());
         }
     }
 }
